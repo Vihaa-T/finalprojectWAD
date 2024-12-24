@@ -17,6 +17,7 @@ const Slug = () => {
   const [error, setError] = useState(null);
   const [currentValidQuery, setCurrentValidQuery] = useState('');
 
+  // Build query string based on router query params
   useEffect(() => {
     const buildQuery = () => {
       const queryParams = [];
@@ -33,7 +34,7 @@ const Slug = () => {
     };
 
     buildQuery();
-  }, [router.query]);
+  }, [router.query]); // Dependency on router.query to update when it changes
 
   const fetchPets = async () => {
     setIsLoading(true);
@@ -73,7 +74,7 @@ const Slug = () => {
     if (currentValidQuery) {
       fetchPets();
     }
-  }, [currentValidQuery]);
+  }, [currentValidQuery]); // Dependency on currentValidQuery to fetch pets when it changes
 
   const handleNextPageChange = () => {
     const nextOffset = parseInt(router.query.offset || 0) + 10;
