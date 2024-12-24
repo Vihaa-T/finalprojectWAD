@@ -1,4 +1,3 @@
-ECHO is on.
 import bcrypt from 'bcrypt';
 import { Pool } from 'pg';
 
