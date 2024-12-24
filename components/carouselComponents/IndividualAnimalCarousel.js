@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CarouselStyles from '../../styles/Carousel.module.css';
 // import CarouselStyles from '../../styles/IndividualAnimalPage.module.css';
-import IndividualAnimalImages from '../imgComponents/IndividualAnimalImages';
+import IndividualAnimalImages from '../../../components/imgComponents/IndividualAnimalImages';
+
 
 const IndividualAnimalCarousel = ({ result }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
