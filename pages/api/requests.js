@@ -1,4 +1,3 @@
-ECHO is on.
 import { Pool } from 'pg';
 
 const pool = new Pool({
