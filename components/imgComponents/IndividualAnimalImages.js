@@ -2,8 +2,12 @@ import React from 'react';
 import Image from 'next/image';
 
 const IndividualAnimalImages = ({ result }) => {
-  // Assuming `result.photos` is an array of image objects and each object has a 'full' URL and a 'alt' text
-  const photos = result.photos || []; // Make sure photos exists, otherwise it defaults to an empty array
+  // Ensure result and result.photos exist before proceeding
+  const photos = result?.photos || []; // Use optional chaining to check for null or undefined
+
+  if (!result) {
+    return <p>Loading...</p>; // Return loading state if result is not available
+  }
 
   return (
     <>
@@ -11,15 +15,15 @@ const IndividualAnimalImages = ({ result }) => {
         photos.map((photo, index) => (
           <Image
             key={index}
-            layout="intrinsic"
-            src={photo.full}
-            alt={`Image of ${result.name} - Photo ${index + 1}`}
+            src={photo.full} // Assuming each photo object has a 'full' URL property
+            alt={`Image of ${result.name} - Photo ${index + 1}`} // Use a descriptive alt text
             width={500}
             height={500}
+            layout="intrinsic" // Ensures the image scales correctly
           />
         ))
       ) : (
-        <p>No photos available</p>
+        <p>No photos available</p> // Fallback message if there are no photos
       )}
     </>
   );
